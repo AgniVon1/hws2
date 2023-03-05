@@ -8,15 +8,19 @@
 }
 
 .nav {
+
 }
 
 .nav a {
+
 }
 
 .nav a:hover {
+    color: #212A34;
 }
 
 .nav a.active {
+    color: red;
 }
 .close {
 }

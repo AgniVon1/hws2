@@ -19,44 +19,76 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [isDisabled, setDisable] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
             x === null
-                ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
+                ? 'https://xxxxxx.ccc'
                 : 'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test'
+        const setInfoError = (e: any) => {
+            setCode(e.response.status)
+            setText(e.response.data.errorText)
+            setInfo(e.response.data.info)
+
+        }
 
         setCode('')
         setImage('')
         setText('')
-        setInfo('...loading')
-
+        setInfo('')
+        setDisable(true)
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode('Код 200!')
-                setImage(success200)
-                // дописать
-
-            })
+                    setInfo(res.data.info)
+                    setText(res.data.errorText)
+                    setCode(res.status + '')
+                    setImage(success200)
+                    setDisable(false)
+                }
+            )
             .catch((e) => {
-                // дописать
-
+                console.log(e.response)
+                switch (e.response.status) {
+                    case 400: {
+                        setImage(error400)
+                        setInfoError(e)
+                        break;
+                    }
+                    case 500: {
+                        setImage(error500)
+                        setInfoError(e)
+                        break;
+                    }
+                    default: {
+                        setImage(errorUnknown)
+                        setInfoError({
+                            response: {
+                                data: {
+                                    info: "Network Error",
+                                    errorText: "AxiosError",
+                                },
+                                status: "Error!",
+                            }
+                        })
+                    }
+                }
+                setDisable(false)
             })
     }
+
 
     return (
         <div id={'hw13'}>
             <div className={s2.hwTitle}>Homework #13</div>
-
             <div className={s2.hw}>
                 <div className={s.buttonsContainer}>
                     <SuperButton
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isDisabled}
                     >
                         Send true
                     </SuperButton>
@@ -64,8 +96,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isDisabled}
                     >
                         Send false
                     </SuperButton>
@@ -73,8 +104,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isDisabled}
                     >
                         Send undefined
                     </SuperButton>
@@ -82,8 +112,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isDisabled}
                     >
                         Send null
                     </SuperButton>

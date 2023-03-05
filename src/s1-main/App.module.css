@@ -2,10 +2,21 @@
     --header_height: 60px;
 }
 
+.containerHW {
+    border-top:1px solid black;
+    padding: 20px 40px 20px 40px;
+}
 .hw {
-
+    padding: 20px;
+    width: 1200px;
 }
 
 .hwTitle {
 
+    margin: 20px auto;
+    font-family: 'Montserrat', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
 }

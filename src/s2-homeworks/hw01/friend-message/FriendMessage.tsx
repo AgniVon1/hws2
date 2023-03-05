@@ -36,9 +36,7 @@ const FriendMessage = (props: propsFriendMessage) => {
                         id={'hw1-friend-text-' + props.message.id}
                         className={s.friendMessageText}
                     >
-                        {/*создаёт студент*/}
                         {props.message.message.text}
-                        {/**/}
                     </pre>
                 </div>
             </div>
@@ -46,9 +44,7 @@ const FriendMessage = (props: propsFriendMessage) => {
                 id={'hw1-friend-time-' + props.message.id}
                 className={s.friendTime}
             >
-                {/*создаёт студент*/}
                 {props.message.message.time}
-                {/**/}
             </div>
         </div>
     )

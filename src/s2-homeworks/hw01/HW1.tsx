@@ -6,17 +6,16 @@ import FriendMessage from './friend-message/FriendMessage'
 import avatar from './avatar.png'
 
 /*
-** 1 - описать тип MessageType
-** 2 - описать тип MessagePropsType в файле Message.tsx
-** 3 - в файле Message.tsx отобразить приходящие данные
-** 4 - выполнить пункты 2, 3 в файле FriendMessage.tsx
-*  5 - сделать стили в соответствии с дизайном
+** 1 - описать тип MessageType +
+** 2 - описать тип MessagePropsType в файле Message.tsx +
+** 3 - в файле Message.tsx отобразить приходящие данные +
+** 4 - выполнить пункты 2, 3 в файле FriendMessage.tsx +
+*  5 - сделать стили в соответствии с дизайном +
 * */
 
 
 
 export type MessageType = {
-
     id: number,
     user: {
         avatar: string,
@@ -35,7 +34,11 @@ export const message0: MessageType = {
         name: 'Some Name',
     },
     message: {
-        text: 'some textsome textsome textsome textsome textsome textsome text',
+        text: 'some textsome textsome textsome textsome textsome textsome text' +
+          'some textsome textsome textsome textsome textsome textsome text' +
+          'some textsome textsome textsome textsome textsome textsome text' +
+          'some textsome textsome textsome textsome textsome textsome text' +
+          'some textsome textsome textsome textsome textsome textsome text',
         time: '22:00',
     },
 }
@@ -53,7 +56,7 @@ export const friendMessage0: MessageType = {
 
 const HW1 = () => {
     return (
-        <div id={'hw1'}>
+        <div id={'hw1'} className ={s2.containerHW}>
             <div className={s2.hwTitle}>Homework #1</div>
             <div className={s2.hw}>
                 <div>
